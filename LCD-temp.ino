@@ -1,11 +1,11 @@
 #include "Sensor.h"
 #define SEN_COUNT 4
 
-//States
+/*States
 #define VIEW_S1   1
 #define VIEW_S2   2
 #define EDIT_T    3
-#define SAVE_T    4
+#define SAVE_T    4 */
 
 void setup() {
   Serial.begin(9600);
@@ -18,34 +18,25 @@ Sensor* setValues()
 {
     int temp1 = 0;
     int hum1 = 0;
-    Serial.println("pointers");
-    Serial.println((int)(&temp1), HEX);
-    Serial.println((int)(&temp1+1), HEX);
-    Serial.println((int)(&temp1+2), HEX);
-    Serial.println((int)(&hum1), HEX);
     Sensor arr_sensor[SEN_COUNT];
-    Serial.println("array construido");
     for(int i = 0; i < SEN_COUNT; i++)
     {
-      Serial.print("SERIAL ");
+      Serial.print("SENSOR ");
       Serial.print(i+1);
       Serial.println("\nIntroduce temperatura: ");
       Serial.flush();
-      while(!Serial.available())
-      {
-        ;
-      }
-      temp1 = Serial.read();
+      while(!Serial.available()){;}
+      delay(2);
+      temp1 = Serial.read()-'0';
+      temp1 = 10*temp1 + Serial.read()-'0'; 
       Serial.println("Introduce humedad: ");
       Serial.flush();
       while(!Serial.available())
       {
         ;
       }
-      hum1 = Serial.read();
+      hum1 = Serial.read()-'0';
       arr_sensor[i] = Sensor(temp1, hum1);
-      Serial.println("pointers");
-      Serial.println((int)(&arr_sensor[i]), HEX);
     } 
     return arr_sensor;
 }

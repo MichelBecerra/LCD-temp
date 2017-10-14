@@ -19,7 +19,6 @@ class Sensor{
 
 Sensor::Sensor()
 {
-  Serial.println("Sensorito!");
   this->temperature = 0;
   this->humidity = 0;
 }
@@ -43,8 +42,8 @@ Sensor:: view_sensor()
 {
   lcd.setCursor(1,0);
   lcd.print("T: ");
-  lcd.print(temperature, DEC);
+  lcd.print(get_temp(), DEC);
   lcd.print(" H: ");
-  lcd.print(humidity, DEC);
+  lcd.print(get_humi(), DEC);
 }
 #endif
