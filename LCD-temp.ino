@@ -26,16 +26,14 @@ Sensor* setValues()
       Serial.println("\nIntroduce temperatura: ");
       Serial.flush();
       while(!Serial.available()){;}
-      delay(2);
-      temp1 = Serial.read()-'0';
-      temp1 = 10*temp1 + Serial.read()-'0'; 
+      //delay(2);
+      temp1= Serial.parseInt();
+      // temp1 = Serial.read()-'0';
+      // temp1 = 10*temp1 + Serial.read()-'0'; 
       Serial.println("Introduce humedad: ");
       Serial.flush();
-      while(!Serial.available())
-      {
-        ;
-      }
-      hum1 = Serial.read()-'0';
+      while(!Serial.available()){;}
+      hum1 = Serial.parseInt();
       arr_sensor[i] = Sensor(temp1, hum1);
     } 
     return arr_sensor;
