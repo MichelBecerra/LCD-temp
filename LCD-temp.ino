@@ -18,7 +18,13 @@ Sensor* setValues()
 {
     int temp1 = 0;
     int hum1 = 0;
-    Sensor *arr_sensor;
+    Serial.println("pointers");
+    Serial.println((int)(&temp1), HEX);
+    Serial.println((int)(&temp1+1), HEX);
+    Serial.println((int)(&temp1+2), HEX);
+    Serial.println((int)(&hum1), HEX);
+    Sensor arr_sensor[SEN_COUNT];
+    Serial.println("array construido");
     for(int i = 0; i < SEN_COUNT; i++)
     {
       Serial.print("SERIAL ");
@@ -38,6 +44,8 @@ Sensor* setValues()
       }
       hum1 = Serial.read();
       arr_sensor[i] = Sensor(temp1, hum1);
+      Serial.println("pointers");
+      Serial.println((int)(&arr_sensor[i]), HEX);
     } 
     return arr_sensor;
 }

@@ -17,6 +17,13 @@ class Sensor{
     Sensor *next;
 };
 
+Sensor::Sensor()
+{
+  Serial.println("Sensorito!");
+  this->temperature = 0;
+  this->humidity = 0;
+}
+
 Sensor::Sensor(int temp1, int hum1)
 {
   this->temperature = temp1;
