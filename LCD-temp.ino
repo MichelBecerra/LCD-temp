@@ -26,10 +26,7 @@ Sensor* setValues()
       Serial.println("\nIntroduce temperatura: ");
       Serial.flush();
       while(!Serial.available()){;}
-      //delay(2);
       temp1= Serial.parseInt();
-      // temp1 = Serial.read()-'0';
-      // temp1 = 10*temp1 + Serial.read()-'0'; 
       Serial.println("Introduce humedad: ");
       Serial.flush();
       while(!Serial.available()){;}
@@ -41,13 +38,17 @@ Sensor* setValues()
 
 void views(Sensor *arr)
 {
-  for(int i = 0; i < 4; i++)
+  int i = 0;
+  while(true)
   {
+    lcd.clear();
+    i = i%SEN_COUNT; 
     arr[i].view_sensor();
-    delay(5000);
+    delay(1000);
+    i++;
   }
 }
 
-void loop() {
+void loop() { 
   
 }
